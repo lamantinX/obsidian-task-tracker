@@ -7,19 +7,29 @@ status: active
 started: 2025-01-01
 color: "#4A90D9"
 id_prefix: EX
+knowledge_board: knowledge/projects/_example/index
 next_id: 2
 ---
 
 # Example Project
 
-This is a sample project file showing the expected format. You can delete this after running `setup.sh` to create your own projects.
+This is a sample project file showing the expected format. You can delete this after running `setup.sh` or `setup-team.sh` to create your own projects.
 
 **Key fields:**
-- `project`: folder name (lowercase, used in paths like `tasks/myapp/`)
-- `full_name`: display name for reports
-- `repo`: absolute path to the project's git repo (optional — enables git activity tracking)
-- `id_prefix`: short uppercase prefix for task IDs (e.g., APP, WEB, API)
-- `next_id`: auto-incremented by the `/task` command
+- `project`: folder name used in paths like `tasks/myapp/`
+- `full_name`: display name for dashboards and reports
+- `repo`: absolute path to the project's git repo
+- `id_prefix`: short uppercase prefix for IDs
+- `knowledge_board`: project-level knowledge board
+- `next_id`: legacy counter for old workflows only
+
+## Repo
+
+`repo path not set`
+
+## Knowledge Board
+
+- [[knowledge/projects/_example/index|Example knowledge board]]
 
 ## Active Tasks
 

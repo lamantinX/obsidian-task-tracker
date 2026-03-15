@@ -8,11 +8,11 @@ kanban-plugin: basic
 
 
 
-## In Progress
+## В работе
 
 
 
-## Blocked
+## Заблокировано
 
 
 

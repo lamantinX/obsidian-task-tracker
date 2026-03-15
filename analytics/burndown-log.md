@@ -2,9 +2,9 @@
 type: analytics
 ---
 
-# Burndown Log
+# Журнал burndown
 
-Appended daily by `/review` and `/pulse` commands.
+Файл обновляется ежедневным review или weekly/pulse-процессом.
 
-| Date | Open | Done | Blocked | Created |
-|------|------|------|---------|---------|
+| Дата | Открыто | Завершено | Заблокировано | Создано |
+|------|---------|------------|---------------|---------|

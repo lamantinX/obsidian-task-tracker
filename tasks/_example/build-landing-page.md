@@ -1,33 +1,48 @@
 ---
-id: EX-001
+id: EX-20250115-01
 title: Build landing page
 status: todo
 project: _example
 priority: high
+owner:
+executor: human
+kind: feature
+repo:
+handoff_status: inbox
+orchestration_status: none
+deerflow_mode: none
+codex_mode: none
 due: 2025-02-01
 tags: [frontend, launch]
 created: 2025-01-15
 completed:
-blocked_by:
+blocked_by: []
 effort: 4h
 actual:
+related_research: []
+dispatch_ready: false
+related_notes: []
 ---
 
-## Description
+## Описание
 
-Build the initial landing page for the project. This is a sample task showing the expected file format.
+Собрать первую версию landing page для проекта. Это пример задачи в новой team-mode схеме.
 
-## Acceptance Criteria
+## Критерии приёмки
 
-- [ ] Hero section with value proposition
-- [ ] Feature highlights
-- [ ] Call to action
-- [ ] Mobile responsive
+- [ ] Есть hero section с value proposition
+- [ ] Есть блок feature highlights
+- [ ] Есть call to action
+- [ ] Макет адаптирован под мобильные экраны
 
-## Notes
+## Заметки по реализации
 
-This is an example task. Delete the `tasks/_example/` folder and `projects/_example.md` once you've created your own projects.
+Это пример задачи. После настройки своего vault можно удалить `tasks/_example/` и `projects/_example.md`.
 
-## Log
+## Ограничения исполнения
 
-- 2025-01-15: Created
+- Не переводить в `executor: codex` без явного dispatch.
+
+## Журнал
+
+- 2025-01-15: Создана задача

@@ -3,61 +3,70 @@ type: weekly
 week: <% tp.date.now("YYYY-[W]WW") %>
 ---
 
-# Week <% tp.date.now("[W]WW, YYYY") %>
+# Неделя <% tp.date.now("[W]WW, YYYY") %>
 
-## Tasks Completed This Week
+## Завершённые задачи за неделю
 
 ```dataview
-TABLE project, completed, actual
+TABLE project as "Проект", completed as "Завершено", actual as "Факт"
 FROM "tasks"
 WHERE status = "done" AND completed >= date(today) - dur(6d)
 SORT completed ASC
 ```
 
-## Velocity by Project
+## Скорость по проектам
 
 ```dataview
-TABLE length(rows) as "Completed"
+TABLE length(rows) as "Завершено"
 FROM "tasks"
 WHERE status = "done" AND completed >= date(today) - dur(6d)
 GROUP BY project
 ```
 
-## Tasks Created This Week
+## Создано за неделю
 
 ```dataview
-TABLE project, status, priority
+TABLE project as "Проект", status as "Статус", priority as "Приоритет"
 FROM "tasks"
 WHERE created >= date(today) - dur(6d)
 SORT project ASC
 ```
 
-## Blocked Items
+## Очередь DeerFlow
 
 ```dataview
-TABLE project, blocked_by, due
+TABLE project as "Проект", deerflow_mode as "Режим", handoff_status as "Этап"
+FROM "tasks"
+WHERE executor = "deerflow" AND status != "done" AND status != "cancelled"
+SORT created DESC
+```
+
+## Блокеры
+
+```dataview
+TABLE project as "Проект", blocked_by as "Блокеры", due as "Срок"
 FROM "tasks"
 WHERE status = "blocked"
 SORT due ASC
 ```
 
-## Retrospective
+## Ретроспектива
 
-### What went well
-
-
-
-### What could be better
+### Что сработало
 
 
 
-### Key decisions
+### Что требует улучшения
 
 
 
-## Next Week Planning
+### Ключевые решения
 
-### Priorities
+
+
+## План на следующую неделю
+
+### Приоритеты
 
 1.
 2.
@@ -66,7 +75,7 @@ SORT due ASC
 ### Carry-over
 
 ```dataview
-TABLE project, priority, due
+TABLE project as "Проект", priority as "Приоритет", due as "Срок"
 FROM "tasks"
 WHERE status = "in-progress"
 SORT priority ASC
@@ -74,4 +83,4 @@ SORT priority ASC
 
 ---
 
-[[<% tp.date.now("YYYY-[W]WW", -7) %>|Last Week]] | [[<% tp.date.now("YYYY-[W]WW", 7) %>|Next Week]]
+[[<% tp.date.now("YYYY-[W]WW", -7) %>|Прошлая неделя]] | [[<% tp.date.now("YYYY-[W]WW", 7) %>|Следующая неделя]]

@@ -10,59 +10,66 @@ tasks_created: 0
 
 # <% tp.date.now("dddd, MMMM D, YYYY") %>
 
-## Morning Planning
+## Планирование дня
 
-### Top 3 Priorities
+### Топ-3 приоритета
 
 1.
 2.
 3.
 
-### Due Today
+### Срок сегодня
 
 ```dataview
-TABLE project, priority, effort
+TABLE project as "Проект", priority as "Приоритет", effort as "Оценка"
 FROM "tasks"
 WHERE due = date("<% tp.date.now("YYYY-MM-DD") %>") AND status != "done" AND status != "cancelled"
 SORT priority ASC
 ```
 
-### Overdue
+### Просрочено
 
 ```dataview
-TABLE project, priority, due, effort
+TABLE project as "Проект", priority as "Приоритет", due as "Срок", effort as "Оценка"
 FROM "tasks"
 WHERE due < date("<% tp.date.now("YYYY-MM-DD") %>") AND status != "done" AND status != "cancelled"
 SORT due ASC
 ```
 
-### In Progress
+### В работе
 
 ```dataview
-TABLE project, priority, due
+TABLE project as "Проект", priority as "Приоритет", due as "Срок"
 FROM "tasks"
 WHERE status = "in-progress"
 SORT priority ASC
 ```
 
-## Time Blocks
+### Готово для Codex
 
-| Time | Block | Task/Notes |
-|------|-------|------------|
-| 09:00-10:30 | Deep Work | |
-| 10:30-11:00 | Break | |
-| 11:00-12:30 | Deep Work | |
-| 12:30-13:30 | Lunch | |
-| 13:30-14:00 | Comms | |
-| 14:00-16:00 | Deep Work | |
-| 16:00-16:30 | Break | |
-| 16:30-18:00 | Wrap-up | |
+```dataview
+TABLE project as "Проект", owner as "Владелец", codex_mode as "Режим", handoff_status as "Этап"
+FROM "tasks"
+WHERE executor = "codex" AND dispatch_ready = true AND (handoff_status = "ready" OR handoff_status = "dispatched")
+SORT priority ASC
+```
 
-## Git Activity
+## Блоки времени
+
+| Время | Блок | Задача / заметки |
+|------|------|-------------------|
+| 09:00-10:30 | Фокус | |
+| 10:30-11:00 | Перерыв | |
+| 11:00-12:30 | Фокус | |
+| 12:30-13:30 | Обед | |
+| 13:30-14:00 | Коммуникации | |
+| 14:00-16:00 | Фокус | |
+| 16:00-16:30 | Перерыв | |
+| 16:30-18:00 | Завершение дня | |
+
+## Git-активность
 
 <%*
-// Reads project files to get repo paths dynamically.
-// Requires Templater system commands to be enabled.
 const fs = require("fs");
 const vaultPath = app.vault.adapter.basePath;
 const projectDir = vaultPath + "/projects";
@@ -78,10 +85,10 @@ for (const file of files) {
   if (!repo) continue;
   tR += `### ${name}\n\`\`\`\n`;
   try {
-    const log = await tp.system.command_output(`cd "${repo}" && git log --oneline --since="${today}" --until="${tomorrow}" 2>/dev/null || echo "No commits today"`);
+    const log = await tp.system.command_output(`cd "${repo}" && git log --oneline --since="${today}" --until="${tomorrow}" 2>/dev/null || echo "Нет коммитов за сегодня"`);
     tR += log;
   } catch(e) {
-    tR += "Could not fetch git log";
+    tR += "Не удалось получить git log";
   }
   tR += `\n\`\`\`\n\n`;
 }
@@ -90,13 +97,13 @@ if (files.every(f => {
   const repoMatch = content.match(/repo:\s*(.+)/);
   return !repoMatch || !repoMatch[1].trim();
 })) {
-  tR += "_No project repos configured yet. Add `repo:` paths in your project files._\n";
+  tR += "_Репозитории проектов ещё не настроены. Заполните поле `repo:` в project files._\n";
 }
 %>
 
-## End of Day Review
+## Review дня
 
-### Completed Today
+### Завершено сегодня
 
 ```dataview
 LIST
@@ -104,14 +111,24 @@ FROM "tasks"
 WHERE status = "done" AND completed = date("<% tp.date.now("YYYY-MM-DD") %>")
 ```
 
-### Summary
+### Новые knowledge notes
 
-- Tasks completed:
-- Tasks created:
-- Blockers:
-- Key wins:
-- Tomorrow's focus:
+```dataview
+TABLE note_type as "Тип", project as "Проект", created as "Создано"
+FROM "knowledge"
+WHERE created = date("<% tp.date.now("YYYY-MM-DD") %>")
+SORT file.name ASC
+```
+
+### Краткое summary
+
+- Задач завершено:
+- Задач создано:
+- Что ушло в DeerFlow:
+- Что ушло в Codex:
+- Блокеры:
+- Фокус на завтра:
 
 ---
 
-[[<% tp.date.now("YYYY-MM-DD", -1) %>|Yesterday]] | [[<% tp.date.now("YYYY-MM-DD", 1) %>|Tomorrow]] | [[<% tp.date.now("YYYY-[W]WW") %>|This Week]]
+[[<% tp.date.now("YYYY-MM-DD", -1) %>|Вчера]] | [[<% tp.date.now("YYYY-MM-DD", 1) %>|Завтра]] | [[<% tp.date.now("YYYY-[W]WW") %>|Эта неделя]]

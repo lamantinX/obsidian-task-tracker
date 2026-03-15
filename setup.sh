@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Legacy single-user setup. For team mode use ./setup-team.sh.
+
 # Obsidian Task Tracker — Interactive Setup
 # Creates project folders, configures CLAUDE.md, and initializes git.
 
