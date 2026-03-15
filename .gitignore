@@ -1,7 +1,5 @@
-# Obsidian workspace (user-specific, changes constantly)
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/cache
+# Obsidian local state and installed plugins
+.obsidian/
 
 # System files
 .DS_Store
