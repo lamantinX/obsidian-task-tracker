@@ -8,6 +8,7 @@ started: 2025-01-01
 color: "#4A90D9"
 id_prefix: EX
 knowledge_board: knowledge/projects/_example/index
+product: _example-product
 next_id: 2
 ---
 

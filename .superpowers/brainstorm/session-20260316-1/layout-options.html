@@ -1,0 +1,137 @@
+<h2>Choose the redesign direction</h2>
+<p class="subtitle">All three keep the sidebar and reuse the current data model. The difference is how strict the workspace feels.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A. Dense operator layout</div>
+        <div class="mockup-body">
+          <div style="display:grid;grid-template-columns:220px 1fr;min-height:260px;">
+            <div style="border-right:1px solid #d4d4d4;padding:12px;background:#f7f7f5;">
+              <div style="font-weight:600;margin-bottom:12px;">Task Tracker</div>
+              <div style="display:grid;gap:6px;">
+                <div class="mock-button" style="text-align:left;">Dashboard</div>
+                <div class="mock-button" style="text-align:left;">Tasks</div>
+                <div class="mock-button" style="text-align:left;">Projects</div>
+                <div class="mock-button" style="text-align:left;">Products</div>
+              </div>
+            </div>
+            <div style="padding:14px;background:#fff;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <div style="font-size:22px;font-weight:600;">Dashboard</div>
+                <div class="mock-input" style="width:220px;">Search</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
+                <div class="placeholder" style="height:72px;">Count</div>
+                <div class="placeholder" style="height:72px;">Count</div>
+                <div class="placeholder" style="height:72px;">Count</div>
+                <div class="placeholder" style="height:72px;">Count</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:10px;">
+                <div class="placeholder" style="height:124px;">Priority queue table</div>
+                <div class="placeholder" style="height:124px;">Products / projects summary</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dense operator layout</h3>
+      <p>Closest to the current app. Keeps data-heavy screens, but replaces the AI dashboard styling with stricter spacing and normal controls.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B. Document workspace</div>
+        <div class="mockup-body">
+          <div style="display:grid;grid-template-columns:220px 1fr;min-height:260px;">
+            <div style="border-right:1px solid #d4d4d4;padding:12px;background:#f7f7f5;">
+              <div style="font-weight:600;margin-bottom:12px;">Task Tracker</div>
+              <div style="display:grid;gap:6px;">
+                <div class="mock-button" style="text-align:left;">Dashboard</div>
+                <div class="mock-button" style="text-align:left;">Tasks</div>
+                <div class="mock-button" style="text-align:left;">Projects</div>
+                <div class="mock-button" style="text-align:left;">Products</div>
+              </div>
+            </div>
+            <div style="padding:14px;background:#fff;">
+              <div style="font-size:22px;font-weight:600;margin-bottom:14px;">Dashboard</div>
+              <div style="border:1px solid #d4d4d4;padding:12px;margin-bottom:10px;">Today: 3 blocked tasks, 5 ready for work, 2 overdue</div>
+              <div style="display:grid;gap:10px;">
+                <div class="placeholder" style="height:86px;">Main action list</div>
+                <div class="placeholder" style="height:86px;">Secondary queue</div>
+                <div class="placeholder" style="height:86px;">Recent project movement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Document workspace</h3>
+      <p>Recommendation for the cheapest rewrite. Removes dashboard theater and makes each page read like a serious workbench with lists first, numbers second.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C. Split management view</div>
+        <div class="mockup-body">
+          <div style="display:grid;grid-template-columns:220px 1fr;min-height:260px;">
+            <div style="border-right:1px solid #d4d4d4;padding:12px;background:#f7f7f5;">
+              <div style="font-weight:600;margin-bottom:12px;">Task Tracker</div>
+              <div style="display:grid;gap:6px;">
+                <div class="mock-button" style="text-align:left;">Dashboard</div>
+                <div class="mock-button" style="text-align:left;">Tasks</div>
+                <div class="mock-button" style="text-align:left;">Projects</div>
+                <div class="mock-button" style="text-align:left;">Products</div>
+              </div>
+            </div>
+            <div style="padding:14px;background:#fff;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <div style="font-size:22px;font-weight:600;">Tasks</div>
+                <div style="display:flex;gap:8px;">
+                  <div class="mock-button">Table</div>
+                  <div class="mock-button">Kanban</div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 320px;gap:10px;">
+                <div class="placeholder" style="height:180px;">Task list / table</div>
+                <div class="placeholder" style="height:180px;">Inspector drawer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Split management view</h3>
+      <p>Best for the task screen, but if used everywhere it risks keeping too much of the current “panel app” feel.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Recommended</h4>
+      <ul>
+        <li>B is the cheapest way to look intentional without rewriting data flows.</li>
+        <li>It fits Uncodixfy: standard sidebar, standard headers, normal cards, tables and lists doing the real work.</li>
+        <li>It still allows C-style split layout only on the tasks page, where it is functionally justified.</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Tradeoff</h4>
+      <ul>
+        <li>A is safer visually but may still read like a polished AI dashboard.</li>
+        <li>C is strong for task editing but too panel-heavy as the global language.</li>
+      </ul>
+    </div>
+  </div>
+</div>

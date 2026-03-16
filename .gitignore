@@ -7,3 +7,9 @@
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Web panel
+web/node_modules/
+web/.next/
+web/coverage/
+web/test-results/

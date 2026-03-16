@@ -55,7 +55,7 @@ This direction intentionally keeps the UI boring in the good sense: predictable,
   - dark text
   - restrained accent for active controls
   - explicit warning/danger color for blocked or failing states
-
+- Add Dark theme переключатель
 ### Typography
 
 - Keep typography simple and readable.
@@ -64,6 +64,7 @@ This direction intentionally keeps the UI boring in the good sense: predictable,
 - Avoid mixed “premium” styling tricks.
 
 ### Motion and interaction
+
 
 - No transform-based hover animation.
 - Hover and active states should rely on border, background, and text contrast only.

@@ -4,24 +4,25 @@ title: Build landing page
 status: todo
 project: _example
 priority: high
-owner:
+owner: 
+creator: demo@example.com
 executor: human
-kind: feature
-repo:
 handoff_status: inbox
+due: 2025-02-01
+created: 2025-01-15
+completed: 
+effort: 4h
+actual: 
+blocked_by: []
+tags: [frontend, launch]
+dispatch_ready: false
+related_research: []
+related_notes: []
+repo: 
+kind: feature
 orchestration_status: none
 deerflow_mode: none
 codex_mode: none
-due: 2025-02-01
-tags: [frontend, launch]
-created: 2025-01-15
-completed:
-blocked_by: []
-effort: 4h
-actual:
-related_research: []
-dispatch_ready: false
-related_notes: []
 ---
 
 ## Описание
@@ -45,4 +46,6 @@ related_notes: []
 
 ## Журнал
 
+- 2026-03-16: Updated by demo@example.com
+- 2026-03-16: Updated by demo@example.com
 - 2025-01-15: Создана задача
